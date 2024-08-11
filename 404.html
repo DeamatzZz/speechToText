@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            font-size: 50px;
+            color: #ff0000;
+        }
+        p {
+            font-size: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>404</h1>
+    <p>Oops! The page you're looking for doesn't exist.</p>
+    <p>Go back to the <a href="index.html">homepage</a>.</p>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('query');
+        if (query) {
+            document.body.innerHTML += `<p>You searched for: <strong>${query}</strong></p>`;
+        }
+    </script>
+</body>
+</html>
