@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech To Text</title>
+    <style>  
+    .main{
+        height: 45rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .speechtxt{
+        width: 100px;
+        font-size: 25px; 
+        float: left;
+        height: 40px;
+    }
+    .speak{
+        width: 600px;
+        float: left;
+        height: 40px;  
+    }
+    .speak input{
+        width: 590px;
+        height: 32px;
+        font-size: 25px;
+    }
+    .speak input:hover{
+        box-shadow: 3px 3px 3px 3px #e7e4e4;
+        border: 0px;
+    }
+    </style>
+</head>
+<body>
+    <div class="main">  
+        <div class="speechtxt">Speech</div>
+        
+        <!-- Form added around the input field -->
+        <div class="speak">
+            <form id="speechForm" action="next.html" method="GET">
+                <input type="text" id="speechToText" name="query" placeholder="Please Speak To Type" onclick="record()">
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        function record() {
+            var recognition = new webkitSpeechRecognition();
+            recognition.lang = "en-GB";
+            recognition.onresult = function(event) {
+                document.getElementById('speechToText').value = event.results[0][0].transcript;
+                document.getElementById('speechForm').submit();  // Automatically submit the form after speech recognition
+            }
+            recognition.start();
+        }
+    </script>    
+</body>
+</html>
